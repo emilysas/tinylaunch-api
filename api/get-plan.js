@@ -37,6 +37,7 @@ module.exports = async function handler(req, res) {
       capital: record["Capital"] || "",
       confidence: record["Confidence"] || "",
       helpArea: record["HelpArea"] || "",
+      tinyID: record["TinyID"] || "",
     });
     
   } catch (err) {
