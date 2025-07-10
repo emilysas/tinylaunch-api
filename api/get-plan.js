@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 module.exports = async function handler(req, res) {
   const { planId } = req.query;
   if (!planId) return res.status(400).json({ error: "Missing planId" });
@@ -18,8 +16,10 @@ module.exports = async function handler(req, res) {
       },
     });
 
-    const data = await response.json();
-    console.log("Fetched from Airtable:", data);
+    const text = await response.text(); // optional: debug raw response
+    console.log("Raw Airtable response:", text);
+
+    const data = JSON.parse(text);
 
     if (!data.records || data.records.length === 0) {
       return res.status(404).json({ error: "Plan not found" });
