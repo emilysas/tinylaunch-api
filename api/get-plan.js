@@ -28,16 +28,18 @@ module.exports = async function handler(req, res) {
     const record = data.records[0].fields;
 
     res.status(200).json({
-      planText: record["GPT Output"] || "(no plan text)",
-      userSummary: record["User Input Summary"] || "",
-      riskLink: record["Risk Mapper Link"] || "",
-      email: record["Email (optional)"] || "",
+      planText: record["GPTOutput"] || "(no plan text)",
+      userSummary: record["UserInputSummary"] || "",
+      riskLink: record["RiskMapperLink"] || "",
+      email: record["Email"] || "",
       skills: record["Skills"] || "",
       capital: record["Capital"] || "",
       confidence: record["Confidence"] || "",
-      helpArea: record["Help Area"] || "",
+      helpArea: record["HelpArea"] || "",
     });
-
+    
+    console.log("Available fields:", Object.keys(record));
+    
   } catch (err) {
     console.error("Server error:", err);
     res.status(500).json({ error: "Server error" });
