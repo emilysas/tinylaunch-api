@@ -38,8 +38,6 @@ module.exports = async function handler(req, res) {
       helpArea: record["HelpArea"] || "",
     });
     
-    console.log("Available fields:", Object.keys(record));
-    
   } catch (err) {
     console.error("Server error:", err);
     res.status(500).json({ error: "Server error" });
