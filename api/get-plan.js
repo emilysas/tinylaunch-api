@@ -26,7 +26,8 @@ module.exports = async function handler(req, res) {
     }
 
     const record = data.records[0].fields;
-
+    
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.status(200).json({
       planText: record["GPTOutput"] || "(no plan text)",
       userSummary: record["UserInputSummary"] || "",
